@@ -1,0 +1,7 @@
+3de75a903429594fc969caa1a5b22fd5  usr/bin/eparaksts-chrome-extension
+047c1d35adff0c3b0c59d98443f227df  usr/lib/mozilla/plugins/np-eparaksts-plugin.so
+410bfbbb68fd1adc29735b133142eee9  usr/lib/pkcs11/libeparaksts-module.so
+8edbbf011bf9985a3bb0d69d9dd77fab  usr/share/doc/eparaksts-token-signing/changelog.gz
+d36c412f5cb21173fc7797b79af9c4d9  usr/share/doc/eparaksts-token-signing/copyright
+aa4ff4c5cc3be41aca3c68e8df17561c  usr/share/eparaksts-chrome-extension/dfablgdffinpaeiilgjpebchbacimpoa.json
+75d65062b79867b3dbb3eff4ea52e89f  usr/share/eparaksts-chrome-extension/lv.eparaksts.eparaksts_chrome_extension.json

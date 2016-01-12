@@ -1,0 +1,38 @@
+HKCR {
+	NoRemove AppID {
+		'%APPID%' = s 'eparakstspluginie'
+		'eparaksts-plugin-ie.DLL' {
+			val AppID = s '%APPID%'
+		}
+	}
+}
+HKLM {
+	NoRemove SOFTWARE {
+		NoRemove Microsoft {
+			NoRemove Windows {
+				NoRemove CurrentVersion {
+					NoRemove Explorer {
+						NoRemove 'Browser Helper Objects' {
+							ForceRemove '{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}' = s 'eParakstsIEPluginBHO' {
+								val 'NoExplorer' = d '1'
+							}
+						}
+					}
+					NoRemove Ext {
+						NoRemove PreApproved {
+							ForceRemove '{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}' = s 'eParakstsIEPluginBHO' {
+							}
+						}
+					}
+					NoRemove Policies {
+						NoRemove Ext {
+							NoRemove CLSID {
+								ForceRemove val '{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}' = s '1'
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

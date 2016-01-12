@@ -1,0 +1,64 @@
+// eparakstspluginie.idl : IDL source for eparaksts-plugin-ie
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (eparakstspluginie.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(713951C8-AF83-4612-9EEB-9E475399A98B),
+	dual,
+	nonextensible,
+	helpstring("IeParakstsIEPluginBHO Interface"),
+	pointer_default(unique)
+]
+interface IeParakstsIEPluginBHO : IDispatch{
+	[propget, id(1), helpstring("property version")] HRESULT version([out, retval] BSTR *result);
+	[propget, id(2), helpstring("property errorMessage")] HRESULT errorMessage([out, retval] BSTR *result);
+	[propget, id(3), helpstring("property errorCode")] HRESULT errorCode([out, retval] BSTR *result);
+	[propget, id(4), helpstring("property language")] HRESULT pluginLanguage([out, retval] BSTR *result);
+	[propput, id(4), helpstring("property language")] HRESULT pluginLanguage([in] BSTR language);
+	[id(6), helpstring("method getCertificate()")] HRESULT getCertificate([out, retval] IDispatch **_certificate);
+	[id(7), helpstring("method sign()")] HRESULT sign([in] BSTR id, [in] BSTR hash, [in] BSTR language, [out, retval] BSTR *signature); 
+};
+[
+	object,
+	uuid(0E3620BC-DB00-4885-B8E6-0F3DA9987FCC),
+	dual,
+	nonextensible,
+	helpstring("IeParakstsCertificate Interface"),
+	pointer_default(unique)
+]
+interface IeParakstsCertificate : IDispatch{
+	[propget, id(1), helpstring("property certificate id")] HRESULT id([out, retval] BSTR *id);
+	[propget, id(2), helpstring("property certificate certificateAsHex")] HRESULT certificateAsHex([out, retval] BSTR *certificate);
+	[propget, id(3), helpstring("property certificate cert (certificateAsHex)")] HRESULT cert([out, retval] BSTR *certificate);
+};
+[
+	uuid(3055A8D3-CBEB-4BD9-B8C7-FC760780E26B),
+	version(1.0),
+	helpstring("eparakstspluginie 1.0 Type Library")
+]
+library eparakstspluginieLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0),
+		helpstring("eParakstsIEPluginBHO Class")
+	]
+	coclass eParakstsIEPluginBHO
+	{
+		[default] interface IeParakstsIEPluginBHO;
+	};
+	[
+		uuid(F1DB7C78-EEF3-4509-B9FB-B5DD3528EAC4),
+		helpstring("eParakstsCertificate Class")
+	]
+	coclass eParakstsCertificate
+	{
+		[default] interface IeParakstsCertificate;
+	};
+};

@@ -1,0 +1,5 @@
+<RCC>
+<qresource prefix="/">
+<file alias="eparaksts-chrome-extension.png">../extension/icon128.png</file>
+</qresource>
+</RCC>

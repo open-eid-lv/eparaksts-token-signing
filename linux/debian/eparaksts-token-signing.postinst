@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+mkdir -p /etc/opt/chrome/native-messaging-hosts
+ln -sf /usr/share/eparaksts-chrome-extension/lv.eparaksts.eparaksts_chrome_extension.json /etc/opt/chrome/native-messaging-hosts/lv.eparaksts.eparaksts_chrome_extension.json

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+eParaksts Token Signing
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+-->
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Name="eParaksts Token Signing" UpgradeCode="0B4CCDDE-76E7-44C2-897A-F3AAA36B7386" Id="*" Language="1033" Version="1.0.2" Codepage="1251" Manufacturer="eParaksts">
+		<Package Keywords="Installer" Platform="x64" InstallerVersion="405" Compressed="yes"/>
+		<MediaTemplate EmbedCab="yes" CompressionLevel="high"/>
+		<Icon Id="Icon.ico" SourceFile="eparaksts.ico"/>
+		<Property Id="ARPPRODUCTICON" Value="Icon.ico" />
+		<MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage=
+		"A newer version of [ProductName] is already installed. If you are trying to downgrade, please uninstall the newer version first."/>
+		<Condition Message="[ProductName] requires Windows 7 or higher.">
+		  <![CDATA[Installed OR (VersionNT >= 601)]]>
+		</Condition>
+		<UIRef Id="WixUI_Minimal" />
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id='ProgramFilesFolder'>
+				<Directory Id="APPLICATIONFOLDER" Name="eParaksts Token Signing">
+								
+					<Component Id="PluginIE" Guid="{73B8FA92-323F-4396-B1AE-612B4EB6D6D2}">
+						<AppId Description="IE plugin for eParaksts" Id="B1C669E7-2A5B-4E51-922B-DB5891485F93"/>
+						<File Source="eparaksts-plugin/ie/Release/eparaksts-plugin-ie.dll" Id="eparaksts_plugin_ie.dll" KeyPath="yes" Name="eparaksts-plugin-ie.dll">
+							<TypeLib Id="{3055A8D3-CBEB-4BD9-B8C7-FC760780E26B}" Description="eparakstspluginie 1.0 Type Library" Language="0" MajorVersion="1" MinorVersion="0">
+								<Class Id="{F1DB7C78-EEF3-4509-B9FB-B5DD3528EAC4}" Context="InprocServer32" Description="eParakstsCertificate Class" ThreadingModel="apartment" Programmable="yes">
+									<ProgId Id="eparakstspluginie.eParakstsCertificate.1" Description="eParakstsCertificate Class">
+										<ProgId Id="eparakstspluginie.eParakstsCertificate" Description="eParakstsCertificate Class"/>
+									</ProgId>
+								</Class>
+								<Class Id="{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}" Context="InprocServer32" Description="eParaksts IE Plugin" ThreadingModel="apartment" Programmable="yes">
+									<ProgId Id="eparakstspluginie.eParakstsIEPluginBHO.1" Description="eParaksts IE Plugin">
+										<ProgId Id="eparakstspluginie.eParakstsIEPluginBHO" Description="eParaksts IE Plugin"/>
+									</ProgId>
+								</Class>
+								<Interface Id="{713951C8-AF83-4612-9EEB-9E475399A98B}" Name="IeParakstsIEPluginBHO" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}"/>
+								<Interface Id="{0E3620BC-DB00-4885-B8E6-0F3DA9987FCC}" Name="IeParakstsCertificate" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}"/>
+							</TypeLib>
+						</File>
+						<ProgId Id="MIME"/>
+						<RegistryValue Root="HKCR" Key="AppID\eparaksts-plugin-ie.DLL" Name="AppID" Value="{B1C669E7-2A5B-4E51-922B-DB5891485F93}" Type="string" Action="write"/>
+						<RegistryValue Root="HKCR" Key="MIME\Database\Content Type\application/x-eparaksts" Name="CLSID" Value="{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}" Type="string" Action="write"/>
+						<!-- IE BHO -->
+						<RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}" Value="eParakstsIEPluginBHO" Type="string" Action="write"/>
+						<RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}" Name="NoExplorer" Value="1" Type="integer" Action="write"/>
+						<!-- ActiveX PreApproved -->
+						<RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\Ext\PreApproved\{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}" Value="eParakstsIEPluginBHO" Type="string" Action="write"/>
+						<RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\Ext\PreApproved\{64B9C17F-A36B-4AB8-B77C-B33390EDCCB1}" Value="eParakstsIEPluginBHO" Type="string" Action="write"/>
+						<!-- ActiveX Safe for Scripting -->
+						<RegistryKey Root="HKLM" Key="SOFTWARE\Classes\CLSID\{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}\Implemented Categories\{7DD95801-9882-11CF-9FA9-00AA006C42C4}" Action="createAndRemoveOnUninstall"/>
+						<!-- ActiveX Enhanced Protected Mode -->
+						<RegistryKey Root="HKLM" Key="SOFTWARE\Classes\CLSID\{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}\Implemented Categories\{59fb2056-d625-48d0-a944-1a85b5ab2640}" Action="createAndRemoveOnUninstall"/>
+						<RegistryKey Root="HKCR" Key="CLSID\{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}\Implemented Categories\{59fb2056-d625-48d0-a944-1a85b5ab2640}" Action="createAndRemoveOnUninstall"/>
+						<!-- ActiveX allow in Add-on List policy setting -->
+						<RegistryKey Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Ext\CLSID" Action="create"/>
+						<RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Ext\CLSID" Name="{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}" Value="1" Action="write" Type="string"/>							  
+					</Component>
+					
+					<Component Id="PluginNP" Guid="E35DC413-C189-483E-AD4B-4C70FE96DBDC">
+						<AppId Description="Browser plugin for eParaksts" Id="B1C669E7-2A5B-4E51-922B-DB5891485F93"/>
+						<File Source="eparaksts-plugin/np-eparaksts-plugin.dll" />
+
+						<File Source="eparaksts-plugin/%PKCS11_WINDOWS%" />
+						<File Source="C:\OpenSSL-Win32\bin\libeay32.dll" />
+						
+						<Environment Id="PATH" Name="PATH" Value="[APPLICATIONFOLDER]" Permanent="no" Part="last" Action="set" System="yes" />
+						
+						<RegistryValue Root='HKLM' Type='string'
+							Value='[APPLICATIONFOLDER]np-eparaksts-plugin.dll'
+							Key='SOFTWARE\MozillaPlugins\@eParaksts/eParaksts Plugin,version=1.0.2'
+							Name="Path" Action="write" />
+					</Component>
+
+					<Component Id="ExtensionChrome" Guid="7E6CB9BF-CE5F-46B8-9569-071B5BD5F102">
+						<File Source="$(env.VCINSTALLDIR)\redist\x86\Microsoft.VC120.CRT\msvcp120.dll" />
+						<File Source="$(env.VCINSTALLDIR)\redist\x86\Microsoft.VC120.CRT\msvcr120.dll" />
+						<File Source="$(env.VCINSTALLDIR)\redist\x86\Microsoft.VC120.CRT\vccorlib120.dll" />
+						<File Source="$(env.VCINSTALLDIR)\redist\x86\Microsoft.VC120.MFC\mfc120u.dll" />
+						<File Source="eparaksts-chrome-extension/host-windows/Release/eparaksts-chrome-extension.exe" />
+						<File Source="eparaksts-chrome-extension/host-windows/lv.eparaksts.eparaksts_chrome_extension.json" />
+						<RegistryValue Root='HKLM' Type='string'
+							Value='[APPLICATIONFOLDER]lv.eparaksts.eparaksts_chrome_extension.json'
+							Key='SOFTWARE\Google\Chrome\NativeMessagingHosts\lv.eparaksts.eparaksts_chrome_extension' />
+						<RegistryValue Root='HKLM' Type='string' Name="update_url"
+							Key='SOFTWARE\Google\Chrome\Extensions\dfablgdffinpaeiilgjpebchbacimpoa'
+							Value='https://clients2.google.com/service/update2/crx' />
+					</Component>
+					
+				</Directory>	  
+			</Directory>
+			
+			<!-- register 64bit COM too -->
+			<?if x64 = "x64" ?>
+			<Directory Id='ProgramFiles64Folder'>
+				<Directory Id="APPLICATION64FOLDER" Name="eParaksts Token Signing">		
+					<Component Id="PluginIE64" Guid="{EA206FF2-7AFE-4c82-A385-DA7398C9892C}" Win64="yes">
+						<AppId Description="IE plugin for eParaksts 64-bit" Id="B1C669E7-2A5B-4E51-922B-DB5891485F93"/>
+						<File Source="eparaksts-plugin/ie/x64/Release/eparaksts-plugin-ie.dll" Id="eparaksts_plugin_ie64.dll" KeyPath="yes" Name="eparaksts-plugin-ie64.dll">
+							<TypeLib Id="{3055A8D3-CBEB-4BD9-B8C7-FC760780E26B}" Description="eparakstspluginie 1.0 Type Library" Language="0" MajorVersion="1" MinorVersion="0">
+								<Class Id="{F1DB7C78-EEF3-4509-B9FB-B5DD3528EAC4}" Context="InprocServer32" Description="eParakstsCertificate Class" ThreadingModel="apartment" Programmable="yes">
+									<ProgId Id="eparakstspluginie.eParakstsCertificate.1" Description="eParakstsCertificate Class">
+										<ProgId Id="eparakstspluginie.eParakstsCertificate" Description="eParakstsCertificate Class"/>
+									</ProgId>
+								</Class>
+								<Class Id="{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}" Context="InprocServer32" Description="eParaksts IE Plugin" ThreadingModel="apartment" Programmable="yes">
+									<ProgId Id="eparakstspluginie.eParakstsIEPluginBHO.1" Description="eParaksts IE Plugin">
+										<ProgId Id="eparakstspluginie.eParakstsIEPluginBHO" Description="eParaksts IE Plugin"/>
+									</ProgId>
+								</Class>
+								<Interface Id="{713951C8-AF83-4612-9EEB-9E475399A98B}" Name="IeParakstsIEPluginBHO" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}"/>
+								<Interface Id="{0E3620BC-DB00-4885-B8E6-0F3DA9987FCC}" Name="IeParakstsCertificate" ProxyStubClassId32="{00020424-0000-0000-C000-000000000046}"/>
+							</TypeLib>
+						</File>							  
+					</Component>
+				</Directory>
+			</Directory>
+			<?endif ?>
+		</Directory>
+
+		<Feature Id="Install" Level="1" Title="eParaksts Token Signing components" Display="expand" ConfigurableDirectory="APPLICATIONFOLDER">
+			<ComponentRef Id="PluginIE"/>
+			<?if x64 = "x64" ?>
+				<ComponentRef Id="PluginIE64"/>
+			<?endif ?>
+			<ComponentRef Id="PluginNP" />
+			<ComponentRef Id="ExtensionChrome"/>
+		</Feature>
+
+	</Product>
+
+</Wix>

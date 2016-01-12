@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+rm -f /etc/opt/chrome/native-messaging-hosts/ee.ria.esteid.json
+rmdir -p --ignore-fail-on-non-empty /etc/opt/chrome/native-messaging-hosts

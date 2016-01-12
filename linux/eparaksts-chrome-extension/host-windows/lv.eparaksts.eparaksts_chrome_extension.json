@@ -1,0 +1,9 @@
+{
+    "name": "lv.eparaksts.eparaksts_chrome_extension",
+    "description": "eParaksts signing extension",
+    "path": "eparaksts-chrome-extension.exe",
+    "type": "stdio",
+    "allowed_origins": [
+        "chrome-extension://dfablgdffinpaeiilgjpebchbacimpoa/"
+    ]
+}

@@ -1,0 +1,9 @@
+{
+    "name": "lv.eparaksts.eparaksts_chrome_extension",
+    "description": "eParaksts signing extension",
+    "path": "/Library/Google/Chrome/NativeMessagingHosts/eparaksts-chrome-extension.app/Contents/MacOS/eparaksts-chrome-extension",
+    "type": "stdio",
+    "allowed_origins": [
+        "chrome-extension://dfablgdffinpaeiilgjpebchbacimpoa/"
+    ]
+}

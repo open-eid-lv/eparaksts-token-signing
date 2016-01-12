@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+rm -f /etc/opt/chrome/native-messaging-hosts/lv.eparaksts.eparaksts_chrome_extension.json
+rmdir -p --ignore-fail-on-non-empty /etc/opt/chrome/native-messaging-hosts

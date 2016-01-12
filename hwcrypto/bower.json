@@ -1,0 +1,42 @@
+{
+  "name": "hwcrypto",
+  "main": [
+    "hwcrypto.js"
+  ],
+  "version": "0.0.10",
+  "authors": [
+    "Martin Paljak <martin@martinpaljak.net>"
+  ],
+  "description": "Polyfill for window.hwcrypto for signing with smart card extensions",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "smartcard"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/open-eid/hwcrypto.js.git",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/open-eid/hwcrypto.js.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "mocha": "~2.1.0",
+    "chai": "~2.1.0",
+    "jquery": "~1.11.2",
+    "should": "~5.2.0",
+    "chai-as-promised": "~4.3.0",
+    "bind-polyfill": "~1.0.0"
+  },
+  "dependencies": {
+    "native-promise-only": "~0.7.6-a",
+    "js-polyfills": "~0.1.2"
+  }
+}

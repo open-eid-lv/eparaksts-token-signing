@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{601210E5-2192-42B9-83E9-46CACC818900}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>hostwindows</RootNamespace>
+    <ProjectName>eparaksts-chrome-extension</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="chrome-token-signing.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="chrome-token-signing.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>C:\OpenSSL-Win32\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;MAJOR_VER=$(MAJOR_VERSION);MINOR_VER=$(MINOR_VERSION);RELEASE_VER=$(RELEASE_VERSION);BUILD_VER=$(BUILD_NUMBER);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\host-shared\json;..\host-shared;C:\OpenSSL-Win32\include</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ncrypt.lib;crypt32.lib;cryptui.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <DelayLoadDLLs>ncrypt.dll</DelayLoadDLLs>
+    </Link>
+    <ResourceCompile />
+    <ResourceCompile>
+      <PreprocessorDefinitions>MAJOR_VER=$(MAJOR_VERSION);MINOR_VER=$(MINOR_VERSION);RELEASE_VER=$(RELEASE_VERSION);BUILD_VER=$(BUILD_NUMBER);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;MAJOR_VER=$(MAJOR_VERSION);MINOR_VER=$(MINOR_VERSION);RELEASE_VER=$(RELEASE_VERSION);BUILD_VER=$(BUILD_NUMBER);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\host-shared\json;..\host-shared;C:\OpenSSL-Win32\include;C:\OpenSSL-Win32\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ncrypt.lib;crypt32.lib;cryptui.lib;libeay32.lib</AdditionalDependencies>
+      <DelayLoadDLLs>ncrypt.dll</DelayLoadDLLs>
+    </Link>
+    <ResourceCompile>
+      <PreprocessorDefinitions>MAJOR_VER=$(MAJOR_VERSION);MINOR_VER=$(MINOR_VERSION);RELEASE_VER=$(RELEASE_VERSION);BUILD_VER=$(BUILD_NUMBER);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\host-shared\BinaryUtils.h" />
+    <ClInclude Include="..\host-shared\json\jsonxx.h" />
+    <ClInclude Include="..\host-shared\Logger.h" />
+    <ClInclude Include="..\host-shared\PKCS11CardManager.h" />
+    <ClInclude Include="..\host-shared\VersionInfo.h" />
+    <ClInclude Include="CertificateSelection.h" />
+    <ClInclude Include="CngCapiSigner.h" />
+    <ClInclude Include="ContextMaintainer.h" />
+    <ClInclude Include="DialogManager.h" />
+    <ClInclude Include="HostExceptions.h" />
+    <ClInclude Include="IOCommunicator.h" />
+    <ClInclude Include="PinDialog.h" />
+    <ClInclude Include="Pkcs11Signer.h" />
+    <ClInclude Include="RequestHandler.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Signer.h" />
+    <ClInclude Include="SignerFactory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\host-shared\BinaryUtils.cpp" />
+    <ClCompile Include="..\host-shared\json\jsonxx.cc" />
+    <ClCompile Include="..\host-shared\Logger.cpp" />
+    <ClCompile Include="CertificateSelection.cpp" />
+    <ClCompile Include="ContextMaintainer.cpp" />
+    <ClCompile Include="chrome-token-signing.cpp" />
+    <ClCompile Include="DialogManager.cpp" />
+    <ClCompile Include="IOCommunicator.cpp" />
+    <ClCompile Include="PinDialog.cpp" />
+    <ClCompile Include="Pkcs11Signer.cpp" />
+    <ClCompile Include="RequestHandler.cpp" />
+    <ClCompile Include="CngCapiSigner.cpp" />
+    <ClCompile Include="SignerFactory.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Makefile" />
+    <None Include="..\VERSION.mk" />
+    <None Include="chrome-token-signing.wxs">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="chrome-token-signing.rc" />
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="chrome-token-signing.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

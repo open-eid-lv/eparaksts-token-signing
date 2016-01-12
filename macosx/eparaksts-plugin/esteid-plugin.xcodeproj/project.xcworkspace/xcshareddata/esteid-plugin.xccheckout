@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F61D4160-DA45-475C-8185-F930E636B296</string>
+	<key>IDESourceControlProjectName</key>
+	<string>esteid-plugin</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>06F29121-6F2A-449E-B1D1-24C8CC6D5C8A</key>
+		<string>file://localhost/Volumes/public/Projects/_GIT/eparaksts-token-signing/</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>src/eparaksts-plugin/esteid-plugin.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>06F29121-6F2A-449E-B1D1-24C8CC6D5C8A</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>file://localhost/Volumes/public/Projects/_GIT/eparaksts-token-signing/</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>06F29121-6F2A-449E-B1D1-24C8CC6D5C8A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>06F29121-6F2A-449E-B1D1-24C8CC6D5C8A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>eparaksts-token-signing</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,20 @@
+HKCR {
+	eparakstspluginie.eParakstsCertificate.1 = s 'eParakstsCertificate Class' {
+		CLSID = s '{F1DB7C78-EEF3-4509-B9FB-B5DD3528EAC4}'
+	}
+	eparakstspluginie.eParakstsCertificate = s 'eParakstsCertificate Class' {
+		CLSID = s '{F1DB7C78-EEF3-4509-B9FB-B5DD3528EAC4}'
+		CurVer = s 'eparakstspluginie.eParakstsCertificate.1'
+	}
+	NoRemove CLSID {
+		ForceRemove {F1DB7C78-EEF3-4509-B9FB-B5DD3528EAC4} = s 'eParakstsCertificate Class' {
+			ProgID = s 'eparakstspluginie.eParakstsCertificate.1'
+			VersionIndependentProgID = s 'eparakstspluginie.eParakstsCertificate'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%' {
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{3055A8D3-CBEB-4BD9-B8C7-FC760780E26B}'
+		}
+	}
+}

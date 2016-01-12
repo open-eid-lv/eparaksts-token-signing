@@ -1,0 +1,33 @@
+HKCR {
+	eparakstspluginie.eParakstsIEPluginBHO.1 = s 'eParakstsIEPluginBHO Class' {
+		CLSID = s '{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}'
+	}
+	eparakstspluginie.eParakstsIEPluginBHO = s 'eParakstsIEPluginBHO Class' {
+		CLSID = s '{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}'
+		CurVer = s 'eparakstspluginie.eParakstsIEPluginBHO.1'
+	}
+	NoRemove CLSID {
+		ForceRemove {D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0} = s 'eParaksts IE Plugin' {
+			ProgID = s 'eparakstspluginie.eParakstsIEPluginBHO.1'
+			VersionIndependentProgID = s 'eparakstspluginie.eParakstsIEPluginBHO'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%' {
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{3055A8D3-CBEB-4BD9-B8C7-FC760780E26B}'
+			'Implemented Categories' = s '' {
+				{59fb2056-d625-48d0-a944-1a85b5ab2640} = s '' {
+				}
+			}
+		}
+	}
+	NoRemove MIME {
+		NoRemove Database {
+			NoRemove 'Content Type' {
+				'application/x-eparaksts' { 
+					val CLSID = s '{D458D6D1-73E8-4D92-A1B1-E48FC4F6CCF0}'
+				}
+			}
+		}
+	}
+}

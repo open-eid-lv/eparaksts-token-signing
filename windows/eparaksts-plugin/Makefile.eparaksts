@@ -1,0 +1,24 @@
+VERSION = 1.0.2
+wix:
+	signtool sign /p krc14245 /f c:\projects\efc\keystore\euso-comodo.pfx /fd SHA256 /t http://timestamp.verisign.com/scripts/timstamp.dll np-eparaksts-plugin.dll
+	signtool sign /p krc14245 /f c:\projects\efc\keystore\euso-comodo.pfx /fd SHA256 /t http://timestamp.verisign.com/scripts/timstamp.dll libeparaksts-module.dll
+	signtool sign /p krc14245 /f c:\projects\efc\keystore\euso-comodo.pfx /fd SHA256 /t http://timestamp.verisign.com/scripts/timstamp.dll libeay32.dll
+	
+	"$(WIX)\bin\candle.exe" firefox-win\firefox-token-signing.wxs -dVERSION=$(VERSION)
+	"$(WIX)\bin\light.exe" -out eparaksts-plugin-$(VERSION).msi firefox-token-signing.wixobj -v -ext WixUIExtension -dWixUILicenseRtf=firefox-win/media/LICENSE.LGPL.rtf -dWixUIDialogBmp=dialog.bmp
+	signtool sign /p krc14245 /f c:\projects\efc\keystore\euso-comodo.pfx /fd SHA256 /t http://timestamp.verisign.com/scripts/timstamp.dll eparaksts-plugin-$(VERSION).msi
+buildie:
+	msbuild /p:Configuration=Release;Platform=Win32 ie\eparaksts-plugin-ie.sln
+	signtool sign /p krc14245 /f c:\projects\efc\keystore\euso-comodo.pfx /fd SHA256 /t http://timestamp.verisign.com/scripts/timstamp.dll ie\Release\eparaksts-plugin-ie.dll
+	msbuild /p:Configuration=Release;Platform=x64 ie\eparaksts-plugin-ie.sln
+	signtool sign /p krc14245 /f c:\projects\efc\keystore\euso-comodo.pfx /fd SHA256 /t http://timestamp.verisign.com/scripts/timstamp.dll ie\x64\Release\eparaksts-plugin-ie.dll
+wixie:
+	"$(WIX)\bin\candle.exe" ie\esteid-plugin-ie.wxs -dVERSION=$(VERSION)
+	"$(WIX)\bin\light.exe" -out eparaksts-plugin-ie-$(VERSION).msi esteid-plugin-ie.wixobj -v -ext WixUIExtension -dWixUILicenseRtf=ie\LICENSE.LGPL.rtf -dWixUIDialogBmp=ie\dialog.bmp
+	signtool sign /p krc14245 /f c:\projects\efc\keystore\euso-comodo.pfx /fd SHA256 /t http://timestamp.verisign.com/scripts/timstamp.dll eparaksts-plugin-ie-$(VERSION).msi
+product:
+	"$(WIX)\bin\candle.exe" product.wxs -dVERSION=$(VERSION)
+	"$(WIX)\bin\light.exe" -out eparaksts-token-signing-$(VERSION).msi product.wixobj -v -ext WixUIExtension -dWixUILicenseRtf=LICENSE.LGPL.rtf -dWixUIDialogBmp=dialog.bmp
+	signtool sign /p krc14245 /f c:\projects\efc\keystore\euso-comodo.pfx /fd SHA256 /t http://timestamp.verisign.com/scripts/timstamp.dll eparaksts-token-signing-$(VERSION).msi
+signmsi:
+	signtool sign /p krc14245 /f c:\projects\efc\keystore\euso-comodo.pfx /fd SHA256 /t http://timestamp.verisign.com/scripts/timstamp.dll eparaksts-token-signing-$(VERSION).msi

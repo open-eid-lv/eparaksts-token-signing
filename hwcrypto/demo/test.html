@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TEST</title>
+  <style type="text/css">
+    body {font-family: Georgia, serif;}
+  </style>
+  
+  <script>
+
+    function log_text(s) {
+      var d = document.createElement("div");
+      d.innerHTML = s;
+      document.getElementById('log').appendChild(d);
+    }
+    
+   function detect_eparaksts() {
+		numPlugins = navigator.plugins.length;
+		log_text("Number of plugins: " + numPlugins);
+		for (i = 0; i < numPlugins; i++) {
+ 			plugin = navigator.plugins[i];
+ 			//log_text("Plugin <b>name:</b> " + plugin.name + " <b>filename:</b> " + plugin.filename + " <b>description:</b> " + plugin.description);
+ 			//log_text("Plugin <b>name:</b> " + plugin.name + " <b>filename:</b> " + plugin.filename);
+ 			for (j = 0; j < plugin.length; j++) {
+  				mimetype = plugin[j];
+  				if(mimetype.type == "application/x-eparaksts")  {
+  				  	enabled = "False";
+  				  	version = "unknown";
+  					if (mimetype.enabledPlugin && (mimetype.enabledPlugin.name == plugin.name)) {
+  						enabled = "True";
+  						//version = plugin.getVersion();
+   					}
+  					log_text("eParaksts plugin: " + plugin.name + " enabled: " + enabled + " version: " + version);
+  				}
+ 			}
+ 		}
+    }
+
+
+</script>
+<!-- SCRIPT>
+numPlugins = navigator.plugins.length;
+
+if (numPlugins > 0)
+  document.writeln("Installed plug-ins");
+else
+ document.writeln("No plug-ins are installed.");
+
+for (i = 0; i < numPlugins; i++) {
+ plugin = navigator.plugins[i];
+ document.write("<center><font size=+1><b>");
+ document.write(plugin.name);
+ document.writeln("</b></font></center><br>");
+ document.writeln("<dl>");
+ document.writeln("<dd>File name:");
+ document.write(plugin.filename);
+ document.write("<dd><br>");
+ document.write(plugin.description);
+ document.writeln("</dl>");
+ document.writeln("<p>");
+ document.writeln("<table border=1 >");
+ document.writeln("<tr>");
+ document.writeln("<th width=20%>Mime Type</th>");
+ document.writeln("<th width=50%>Description</th>");
+ document.writeln("<th width=20%>Suffixes</th>");
+ document.writeln("<th>Enabled</th>");
+ document.writeln("</tr>");
+ numTypes = plugin.length;
+ for (j = 0; j < numTypes; j++)
+ {
+  mimetype = plugin[j];
+ 
+  if (mimetype){
+   enabled = "No";
+   enabledPlugin = mimetype.enabledPlugin;
+   if (enabledPlugin && (enabledPlugin.name == plugin.name))
+    enabled = "Yes";
+   document.writeln("<tr align=center>");
+   document.writeln("<td>");
+   document.write(mimetype.type);
+   document.writeln("</td>");
+   document.writeln("<td>");
+   document.write(mimetype.description);
+   document.writeln("</td>");
+   document.writeln("<td>");
+   document.write(mimetype.suffixes);
+   document.writeln("</td>");
+   document.writeln("<td>");
+   document.writeln(enabled);
+   document.writeln("</td>");
+   document.writeln("</tr>");
+  }
+ }
+ document.write("</table>");
+}
+</SCRIPT-->
+</head>
+<body>
+	<script>document.write("<pre>" + navigator.userAgent + "</pre>");</script>
+   <p><button id="click1" onclick='detect_eparaksts()'>TEST</button></p>
+   <hr>
+   <div id="log" style="white-space: pre; font-family: monospace;"></div>
+</body>
+</html>

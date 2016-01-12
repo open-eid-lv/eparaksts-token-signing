@@ -1,0 +1,5 @@
+./eparaksts-module/libeparaksts-module.so /usr/lib/pkcs11
+./eparaksts-chrome-extension/host-linux/eparaksts-chrome-extension /usr/bin
+./eparaksts-chrome-extension/host-linux/lv.eparaksts.eparaksts_chrome_extension.json /usr/share/eparaksts-chrome-extension
+./eparaksts-chrome-extension/dfablgdffinpaeiilgjpebchbacimpoa.json /usr/share/eparaksts-chrome-extension
+./eparaksts-plugin/np-eparaksts-plugin.so /usr/lib/mozilla/plugins

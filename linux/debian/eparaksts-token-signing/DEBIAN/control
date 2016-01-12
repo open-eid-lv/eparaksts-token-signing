@@ -1,0 +1,11 @@
+Package: eparaksts-token-signing
+Version: 1.0.2
+Architecture: i386
+Maintainer: EUSO <euso@euso.lv>
+Installed-Size: 330
+Depends: libssl0.9.8, libc6 (>= 2.7), libgcc1 (>= 1:4.1.1), libglib2.0-0 (>= 2.14.0), libgtk2.0-0 (>= 2.14.0), libpcsclite1 (>= 1.0.0), libqt5core5a (>= 5.0.2), libqt5gui5 (>= 5.0.2) | libqt5gui5-gles (>= 5.0.2), libqt5network5 (>= 5.0.2), libqt5widgets5 (>= 5.0.2), libssl1.0.0 (>= 1.0.0), libstdc++6 (>= 4.6)
+Suggests: latvia-eid-middleware (>= 1.1.0), libclassicclient (>= 6.1.0)
+Section: web
+Priority: optional
+Homepage: http://www.eparaksts.lv
+Description: eParaksts Token Signing for Linux
